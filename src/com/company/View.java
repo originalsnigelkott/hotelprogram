@@ -14,11 +14,11 @@ public class View {
      * This enum is for showing and choosing main menu options
      */
     public enum MainMenuItem implements MenuOutput {
+        QUIT("Quit"),
         ADMINISTRATOR_SUB_MENU("Show admin menu"),
         RECEPTION_SUB_MENU("Show reception menu"),
         LOAD("Load data from previous session"),
-        HELP("Help"),
-        QUIT("Quit");
+        HELP("Help");
 
         private String menuOutput;
         private String menuHeadline = "Main menu";
@@ -42,10 +42,10 @@ public class View {
      * This enum is for showing and choosing admin menu options
      */
     public enum AdminMenuItem implements MenuOutput {
+        BACK("Back"),
         HIRE("Hire employee"),
         DISMISS("Dismiss employee"),
-        SHOW("Show employees"),
-        BACK("Back");
+        SHOW("Show employees");
 
         private String menuOutput;
         private String menuHeadline = "Main menu/Admin";
@@ -69,10 +69,10 @@ public class View {
      * This enum is for showing and choosing employee type menu options
      */
     public enum hireEmployeeTypeMenuItem implements MenuOutput {
+        BACK("Back"),
         CLEANER("Cleaner"),
         MANAGER("Manager"),
-        RECEPTIONIST("Receptionist"),
-        BACK("Back");
+        RECEPTIONIST("Receptionist");
 
         private String menuOutput;
         private String menuHeadline = "Main menu/Admin/Hire";
@@ -97,12 +97,12 @@ public class View {
      * This enum is for showing and choosing show employee menu options
      */
     public enum ShowEmployeeTypeMenuItem implements MenuOutput {
+        BACK("Back"),
         CLEANER("Show cleaners"),
         MANAGER("Show manager"),
         RECEPTIONIST("Show receptionist"),
         ALL("Show all"),
-        SET_SORTING("Set sorting method"),
-        BACK("Back");
+        SET_SORTING("Set sorting method");
 
         String menuOutput;
         String menuHeadline = "Main menu/Admin/Show";
@@ -126,6 +126,7 @@ public class View {
      * This enum is for showing and choosing sorting menu
      */
     public enum SortEmployeeByMenuItem implements MenuOutput {
+        BACK("Back"),
         NAME("Sort by name"),
         DATE_OF_BIRTH("Sort by date of birth"),
         ID("Sort by employeeID");
@@ -152,9 +153,9 @@ public class View {
      * This enum is for showing and choosing reception menu options
      */
     public enum ReceptionMenuItem implements MenuOutput {
+        BACK("Back"),
         ROOMS("Rooms"),
-        GUESTS("Guests"),
-        BACK("Back");
+        GUESTS("Guests");
 
         String menuOutput;
         String menuHeadline = "Main menu/Reception";
@@ -178,8 +179,8 @@ public class View {
      * This enum is for showing and choosing room menu options
      */
     public enum RoomsMenuItem implements MenuOutput {
-        SHOW_ALL_ROOMS("Show all rooms"),
-        BACK("Back");
+        BACK("Back"),
+        SHOW_ALL_ROOMS("Show all rooms");
 
         String menuOutput;
         String menuHeadline = "Main menu/Reception/Rooms";
@@ -234,17 +235,15 @@ public class View {
      * @param <E>       A generic element that implements MenuOutput
      */
     public <E extends MenuOutput> void showMenu(E[] menuItems) {
-        int i = 1;
         System.out.printf("" +
                         "----------\n" +
                         "%s\n" +
                         "----------\n"
                 , menuItems[0].getMenuHeadline());
-        for (E menuItem :
-                menuItems) {
-            System.out.printf("%d. %s\n", i, menuItem.getMenuOutput());
-            i++;
+        for (int i = 1; i < menuItems.length; i++) {
+            System.out.printf("%d. %s\n", i, menuItems[i].getMenuOutput());
         }
+        System.out.printf("0. %s\n", menuItems[0].getMenuOutput());
     }
 
     /**
@@ -259,7 +258,7 @@ public class View {
         do {
             userInput = input.nextLine();
         } while (!FormatCheckers.menuChoiceIsValid(userInput, menuItems.length));
-        return menuItems[Integer.parseInt(userInput) - 1];
+        return menuItems[Integer.parseInt(userInput)];
     }
 
     /**

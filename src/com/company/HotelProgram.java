@@ -106,26 +106,31 @@ public class HotelProgram {
                                         }
                                         case SET_SORTING: {
                                             if (employees.size() != 0) {
-                                                View.SortEmployeeByMenuItem sortByMenuItemChoice;
-                                                view.showMenu(View.SortEmployeeByMenuItem.values());
-                                                sortByMenuItemChoice = view.inputMenuChoice(View.SortEmployeeByMenuItem.values());
-                                                switch (sortByMenuItemChoice) {
-                                                    case ID: {
-                                                        employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.ID);
-                                                        break;
+                                                View.SortEmployeeByMenuItem sortEmployeeByMenuItemChoice;
+                                                do {
+                                                    view.showMenu(View.SortEmployeeByMenuItem.values());
+                                                    sortEmployeeByMenuItemChoice = view.inputMenuChoice(View.SortEmployeeByMenuItem.values());
+                                                    switch (sortEmployeeByMenuItemChoice) {
+                                                        case ID: {
+                                                            employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.ID);
+                                                            break;
+                                                        }
+                                                        case NAME: {
+                                                            employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.NAME);
+                                                            break;
+                                                        }
+                                                        case DATE_OF_BIRTH: {
+                                                            employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.DATE_OF_BIRTH);
+                                                            break;
+                                                        }
+                                                        case BACK: {
+                                                            break;
+                                                        }
+                                                        default: {
+                                                            view.showErrorMessage("Invalid choice. Try again.");
+                                                        }
                                                     }
-                                                    case NAME: {
-                                                        employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.NAME);
-                                                        break;
-                                                    }
-                                                    case DATE_OF_BIRTH: {
-                                                        employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.DATE_OF_BIRTH);
-                                                        break;
-                                                    }
-                                                    default: {
-                                                        view.showErrorMessage("Invalid choice. Try again.");
-                                                    }
-                                                }
+                                                }while (sortEmployeeByMenuItemChoice != View.SortEmployeeByMenuItem.BACK);
                                                 Collections.sort(employees);
                                             } else {
                                                 view.showErrorMessage("No employees to sort.");

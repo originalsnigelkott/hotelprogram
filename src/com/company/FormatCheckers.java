@@ -23,7 +23,7 @@ public class FormatCheckers {
 
     public static boolean menuChoiceIsValid(String menuChoice, int noOfChoices) {
         if (stringIsIntegers(menuChoice)) {
-            if (Integer.parseInt(menuChoice) <= noOfChoices && Integer.parseInt(menuChoice) > 0) {
+            if (Integer.parseInt(menuChoice) <= noOfChoices && Integer.parseInt(menuChoice) >= 0) {
                 return true;
             } else {
                 View.getInstance().showErrorMessage("No such choice.");
@@ -31,6 +31,7 @@ public class FormatCheckers {
         }
         return false;
     }
+
     //TODO: fix this, maybe a separator issue.
     /*
         public static boolean doubleFormatIsValid(String string) {
@@ -64,6 +65,7 @@ public class FormatCheckers {
         }
         return false;
     }
+
     //TODO: make a formatIsCorrect to replace dateOfBirthFormatIsCorrect and employeeIDInputIsValid
     public static boolean dateOfBirthFormatIsCorrect(String string) {
         if (stringIsIntegers(string)) {
