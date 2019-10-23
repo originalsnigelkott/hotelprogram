@@ -21,9 +21,15 @@ public class View {
         QUIT("Quit");
 
         private String menuOutput;
+        private String menuHeadline = "Main menu";
 
         MainMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
+        }
+
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
         }
 
         @Override
@@ -42,9 +48,15 @@ public class View {
         BACK("Back");
 
         private String menuOutput;
+        private String menuHeadline = "Main menu/Admin";
 
         AdminMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
+        }
+
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
         }
 
         @Override
@@ -56,16 +68,23 @@ public class View {
     /**
      * This enum is for showing and choosing employee type menu options
      */
-    public enum EmployeeTypeMenuItem implements MenuOutput {
+    public enum hireEmployeeTypeMenuItem implements MenuOutput {
         CLEANER("Cleaner"),
         MANAGER("Manager"),
         RECEPTIONIST("Receptionist"),
         BACK("Back");
 
         private String menuOutput;
+        private String menuHeadline = "Main menu/Admin/Hire";
 
-        EmployeeTypeMenuItem(String menuOutput) {
+
+        hireEmployeeTypeMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
+        }
+
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
         }
 
         @Override
@@ -85,10 +104,16 @@ public class View {
         SET_SORTING("Set sorting method"),
         BACK("Back");
 
-        private String menuOutput;
+        String menuOutput;
+        String menuHeadline = "Main menu/Admin/Show";
 
         ShowEmployeeTypeMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
+        }
+
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
         }
 
         @Override
@@ -100,15 +125,21 @@ public class View {
     /**
      * This enum is for showing and choosing sorting menu
      */
-    public enum SortByMenuItem implements MenuOutput {
+    public enum SortEmployeeByMenuItem implements MenuOutput {
         NAME("Sort by name"),
         DATE_OF_BIRTH("Sort by date of birth"),
         ID("Sort by employeeID");
 
-        private String menuOutput;
+        String menuOutput;
+        String menuHeadline = "Main menu/Admin/Show/Set sorting method";
 
-        SortByMenuItem(String menuOutput) {
+        SortEmployeeByMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
+        }
+
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
         }
 
         @Override
@@ -126,9 +157,15 @@ public class View {
         BACK("Back");
 
         String menuOutput;
+        String menuHeadline = "Main menu/Reception";
 
         ReceptionMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
+        }
+
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
         }
 
         @Override
@@ -145,11 +182,18 @@ public class View {
         BACK("Back");
 
         String menuOutput;
+        String menuHeadline = "Main menu/Reception/Rooms";
 
         RoomsMenuItem(String menuOutput) {
             this.menuOutput = menuOutput;
         }
 
+        @Override
+        public String getMenuHeadline() {
+            return menuHeadline;
+        }
+
+        @Override
         public String getMenuOutput() {
             return menuOutput;
         }
@@ -191,6 +235,11 @@ public class View {
      */
     public <E extends MenuOutput> void showMenu(E[] menuItems) {
         int i = 1;
+        System.out.printf("" +
+                        "----------\n" +
+                        "%s\n" +
+                        "----------\n"
+                , menuItems[0].getMenuHeadline());
         for (E menuItem :
                 menuItems) {
             System.out.printf("%d. %s\n", i, menuItem.getMenuOutput());
@@ -326,7 +375,7 @@ public class View {
      * This method prints toString() method of an element
      *
      * @param element The element to be printed
-     * @param <E>    A generic element, in this case any element with a toString method
+     * @param <E>     A generic element, in this case any element with a toString method
      */
     public <E> void showElement(E element) {
         System.out.println(element);

@@ -44,10 +44,10 @@ public class HotelProgram {
                         adminMenuChoice = view.inputMenuChoice(View.AdminMenuItem.values());
                         switch (adminMenuChoice) {
                             case HIRE: {
-                                View.EmployeeTypeMenuItem employeeTypeMenuItem;
+                                View.hireEmployeeTypeMenuItem employeeTypeMenuItem;
                                 do {
-                                    view.showMenu(View.EmployeeTypeMenuItem.values());
-                                    employeeTypeMenuItem = view.inputMenuChoice(View.EmployeeTypeMenuItem.values());
+                                    view.showMenu(View.hireEmployeeTypeMenuItem.values());
+                                    employeeTypeMenuItem = view.inputMenuChoice(View.hireEmployeeTypeMenuItem.values());
                                     switch (employeeTypeMenuItem) {
                                         case CLEANER: {
                                             hireEmployee((Employee) PersonFactory.createPerson(PersonFactory.PersonType.CLEANER));
@@ -68,7 +68,7 @@ public class HotelProgram {
                                             view.showErrorMessage("Invalid choice. Try again");
                                         }
                                     }
-                                } while (employeeTypeMenuItem != View.EmployeeTypeMenuItem.BACK);
+                                } while (employeeTypeMenuItem != View.hireEmployeeTypeMenuItem.BACK);
                                 saveObjectsToFile(employeesSaveFileName, employees);
                                 break;
                             }
@@ -106,9 +106,9 @@ public class HotelProgram {
                                         }
                                         case SET_SORTING: {
                                             if (employees.size() != 0) {
-                                                View.SortByMenuItem sortByMenuItemChoice;
-                                                view.showMenu(View.SortByMenuItem.values());
-                                                sortByMenuItemChoice = view.inputMenuChoice(View.SortByMenuItem.values());
+                                                View.SortEmployeeByMenuItem sortByMenuItemChoice;
+                                                view.showMenu(View.SortEmployeeByMenuItem.values());
+                                                sortByMenuItemChoice = view.inputMenuChoice(View.SortEmployeeByMenuItem.values());
                                                 switch (sortByMenuItemChoice) {
                                                     case ID: {
                                                         employees.get(0).setSortEmployeeBy(Employee.SortEmployeeBy.ID);
@@ -216,6 +216,7 @@ public class HotelProgram {
     private void hireEmployee(Employee employee) {
         if (employee != null) {
             employees.add(employee);
+            view.showMessage("Employee added.");
         }
     }
 
