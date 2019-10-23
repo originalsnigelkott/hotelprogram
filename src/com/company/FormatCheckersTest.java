@@ -27,11 +27,9 @@ public class FormatCheckersTest {
 
     @org.junit.Test
     public void menuChoiceIsValid() {
-        String string = "1";
+        String string = "0";
         assertTrue(FormatCheckers.menuChoiceIsValid(string, 10));
         string = "11";
-        assertFalse(FormatCheckers.menuChoiceIsValid(string, 10));
-        string = "0";
         assertFalse(FormatCheckers.menuChoiceIsValid(string, 10));
         string = "-1";
         assertFalse(FormatCheckers.menuChoiceIsValid(string, 10));
@@ -50,30 +48,26 @@ public class FormatCheckersTest {
     }
 
     @org.junit.Test
-    public void dateOfBirthFormatIsCorrect() {
-        String string = "12345678";
-        assertTrue(FormatCheckers.dateOfBirthFormatIsCorrect(string));
-        string = "123456789";
-        assertFalse(FormatCheckers.dateOfBirthFormatIsCorrect(string));
-        string = "1234567";
-        assertFalse(FormatCheckers.dateOfBirthFormatIsCorrect(string));
-        string = "abcdefgh";
-        assertFalse(FormatCheckers.dateOfBirthFormatIsCorrect(string));
-        string = "-1234567";
-        assertFalse(FormatCheckers.dateOfBirthFormatIsCorrect(string));
-    }
-
-    @org.junit.Test
-    public void employeeIDInputIsValid() {
+    public void formatIsCorrect() {
         String string = "12345";
-        assertTrue(FormatCheckers.employeeIDInputIsValid(string));
+        assertTrue(FormatCheckers.formatIsCorrect(string,5));
         string = "1234567";
-        assertFalse(FormatCheckers.employeeIDInputIsValid(string));
+        assertFalse(FormatCheckers.formatIsCorrect(string,5));
         string = "1234";
-        assertFalse(FormatCheckers.employeeIDInputIsValid(string));
+        assertFalse(FormatCheckers.formatIsCorrect(string,5));
         string = "abcdefgh";
-        assertFalse(FormatCheckers.employeeIDInputIsValid(string));
+        assertFalse(FormatCheckers.formatIsCorrect(string,5));
         string = "-1234";
-        assertFalse(FormatCheckers.employeeIDInputIsValid(string));
+        assertFalse(FormatCheckers.formatIsCorrect(string,5));
+        string = "12345678";
+        assertTrue(FormatCheckers.formatIsCorrect(string,8));
+        string = "123456789";
+        assertFalse(FormatCheckers.formatIsCorrect(string,8));
+        string = "1234567";
+        assertFalse(FormatCheckers.formatIsCorrect(string,8));
+        string = "abcdefgh";
+        assertFalse(FormatCheckers.formatIsCorrect(string,8));
+        string = "-1234567";
+        assertFalse(FormatCheckers.formatIsCorrect(string,8));
     }
 }

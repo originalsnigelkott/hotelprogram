@@ -66,23 +66,10 @@ public class FormatCheckers {
         return false;
     }
 
-    //TODO: make a formatIsCorrect to replace dateOfBirthFormatIsCorrect and employeeIDInputIsValid
-    public static boolean dateOfBirthFormatIsCorrect(String string) {
+    public static boolean formatIsCorrect(String string, int stringLength) {
         if (stringIsIntegers(string)) {
             if (Integer.parseInt(string) > 0) {
-                if (string.length() == 8) {
-                    return true;
-                }
-            }
-        }
-        View.getInstance().showErrorMessage("Wrong format.");
-        return false;
-    }
-
-    public static boolean employeeIDInputIsValid(String string) {
-        if (stringIsIntegers(string)) {
-            if (Integer.parseInt(string) > 0) {
-                if (string.length() == 5) {
+                if (string.length() == stringLength) {
                     return true;
                 }
             }

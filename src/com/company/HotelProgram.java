@@ -17,7 +17,7 @@ public class HotelProgram {
         for (int i = 0; i < NUMBER_OF_FLOORS; i++) {
             floors.add(new Floor(i + 1));
         }
-        ///*
+        ///* This is hardcoded employees to simplify testing.
         employees = new ArrayList<>();
         employees.add(new Manager("Hästen", "Boss", "20090412", 44, 60));
         employees.add(new Receptionist("Saga", "Drake", "19251230", 14.99, 40));

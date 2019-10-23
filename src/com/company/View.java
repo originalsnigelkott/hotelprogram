@@ -305,7 +305,7 @@ public class View {
         String userInput;
         do {
             userInput = input.nextLine();
-        } while (!FormatCheckers.dateOfBirthFormatIsCorrect(userInput));
+        } while (!FormatCheckers.formatIsCorrect(userInput, 8));
         return userInput;
     }
 
@@ -347,7 +347,7 @@ public class View {
         System.out.println("Input employeeID: (1XXXX)");
         do {
             userInput = input.nextLine();
-        } while (!FormatCheckers.employeeIDInputIsValid(userInput));
+        } while (!FormatCheckers.formatIsCorrect(userInput, 5));
         return Integer.parseInt(userInput);
     }
 
