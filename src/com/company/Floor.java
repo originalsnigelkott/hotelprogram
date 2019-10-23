@@ -26,6 +26,10 @@ public class Floor {
         }
     }
 
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
     public void showRooms () {
         for (Room room:
                 rooms) {

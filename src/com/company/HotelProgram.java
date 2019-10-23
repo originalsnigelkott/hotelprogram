@@ -4,7 +4,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class HotelReceptionProgram {
+public class HotelProgram {
     private static final int NUMBER_OF_FLOORS = 3;
     private ArrayList<Floor> floors = new ArrayList<>();
     private ArrayList<Employee> employees;
@@ -12,12 +12,11 @@ public class HotelReceptionProgram {
 
     View view;
 
-    public HotelReceptionProgram() {
+    public HotelProgram() {
         view = View.getInstance();
         for (int i = 0; i < NUMBER_OF_FLOORS; i++) {
             floors.add(new Floor(i + 1));
         }
-        //employees = (ArrayList<Employee>) FileUtils.readObject(employeesSaveFileName);
         ///*
         employees = new ArrayList<>();
         employees.add(new Manager("Hästen", "Boss", "20090412", 44, 60));
@@ -160,8 +159,24 @@ public class HotelReceptionProgram {
                         receptionMenuItemChoice = view.inputMenuChoice(View.ReceptionMenuItem.values());
                         switch (receptionMenuItemChoice) {
                             case ROOMS: {
-                                view.showMessage("Room options coming soon.");
-                                //TODO: implement
+                                View.RoomsMenuItem roomsMenuItemChoice;
+                                do {
+                                    //TODO: implement more options
+                                    view.showMenu(View.RoomsMenuItem.values());
+                                    roomsMenuItemChoice = view.inputMenuChoice(View.RoomsMenuItem.values());
+                                    switch (roomsMenuItemChoice) {
+                                        case SHOW_ALL_ROOMS: {
+                                            showAllRooms();
+                                            break;
+                                        }
+                                        case BACK: {
+                                            break;
+                                        }
+                                        default: {
+                                            view.showErrorMessage("Invalid choice. Try again.");
+                                        }
+                                    }
+                                } while (roomsMenuItemChoice != View.RoomsMenuItem.BACK);
                                 break;
                             }
                             case GUESTS: {
@@ -227,8 +242,22 @@ public class HotelReceptionProgram {
         for (Employee employee :
                 employees) {
             if (myClass.isInstance(employee)) {
-                view.showPerson(employee);
+                view.showElement(employee);
             }
+        }
+    }
+
+    private void showAllRooms(){
+        int counter = 1;
+        for (Floor floor :
+                floors) {
+            view.showMessage("Floor " + counter + ":\n");
+            counter++;
+            for (Room room :
+                    floor.getRooms()) {
+                view.showElement(room);
+            }
+            view.showMessage("");
         }
     }
 

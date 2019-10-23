@@ -5,6 +5,7 @@ import java.util.Scanner;
 /**
  * <h1>View</h1>
  * This singleton class handles all the output and input in the console.
+ *
  * @author originalsnigelkott
  * @version 1.0
  */
@@ -15,7 +16,7 @@ public class View {
     public enum MainMenuItem implements MenuOutput {
         ADMINISTRATOR_SUB_MENU("Show admin menu"),
         RECEPTION_SUB_MENU("Show reception menu"),
-        LOAD ("Load data from previous session"),
+        LOAD("Load data from previous session"),
         HELP("Help"),
         QUIT("Quit");
 
@@ -137,6 +138,24 @@ public class View {
     }
 
     /**
+     * This enum is for showing and choosing room menu options
+     */
+    public enum RoomsMenuItem implements MenuOutput {
+        SHOW_ALL_ROOMS("Show all rooms"),
+        BACK("Back");
+
+        String menuOutput;
+
+        RoomsMenuItem(String menuOutput) {
+            this.menuOutput = menuOutput;
+        }
+
+        public String getMenuOutput() {
+            return menuOutput;
+        }
+    }
+
+    /**
      * Contains the instance of the class
      */
     private static View instance = null;
@@ -154,6 +173,7 @@ public class View {
 
     /**
      * This method checks if there is an instance of View, if there isn't it creates one, and returns it
+     *
      * @return returns the instance of the View class
      */
     public static View getInstance() {
@@ -165,8 +185,9 @@ public class View {
 
     /**
      * This method outputs a menu in the console.
+     *
      * @param menuItems The menu type to output
-     * @param <E> A generic element that implements MenuOutput
+     * @param <E>       A generic element that implements MenuOutput
      */
     public <E extends MenuOutput> void showMenu(E[] menuItems) {
         int i = 1;
@@ -179,8 +200,9 @@ public class View {
 
     /**
      * This method gets the users choice from the menu previously shown
+     *
      * @param menuItems The menu to make a choice from
-     * @param <E> A generic element
+     * @param <E>       A generic element
      * @return
      */
     public <E> E inputMenuChoice(E[] menuItems) {
@@ -193,6 +215,7 @@ public class View {
 
     /**
      * This method outputs a warning message and asks user to confirm their choice
+     *
      * @param warningMessage The warning message to be output to user
      * @return Returns true or false based on the users choice
      */
@@ -201,7 +224,7 @@ public class View {
         String userInput = input.nextLine();
         if (userInput.equalsIgnoreCase("Y") || userInput.equalsIgnoreCase("YES")) {
             return true;
-        } else if(userInput.equalsIgnoreCase("N") || userInput.equalsIgnoreCase("NO")) {
+        } else if (userInput.equalsIgnoreCase("N") || userInput.equalsIgnoreCase("NO")) {
             return false;
         } else {
             showErrorMessage("Only yes or no allowed. Try again.");
@@ -211,6 +234,7 @@ public class View {
 
     /**
      * This method reads a name from the user
+     *
      * @param type This argument is to output first or last in the prompt
      * @return Returns the string input by the user
      */
@@ -225,6 +249,7 @@ public class View {
 
     /**
      * This method reads a date of birth from the user
+     *
      * @return Returns the string input by the user
      */
     public String inputDateOfBirth() {
@@ -238,6 +263,7 @@ public class View {
 
     /**
      * This method reads a salary from the user
+     *
      * @return Returns the double input by the user
      */
     public double inputSalary() {
@@ -251,6 +277,7 @@ public class View {
 
     /**
      * This method reads a hours worked per week from the user
+     *
      * @return Returns the double input by the user
      */
     public double inputHoursPerWeek() {
@@ -264,6 +291,7 @@ public class View {
 
     /**
      * This method reads an employee ID from the user
+     *
      * @return Returns the integer input byt the user
      */
     public int inputEmployeeID() {
@@ -277,6 +305,7 @@ public class View {
 
     /**
      * This method prints a message
+     *
      * @param message The message to be displayed
      */
     public void showMessage(String message) {
@@ -285,6 +314,7 @@ public class View {
 
     /**
      * This method prints an error message
+     *
      * @param errorMessage Description of the error that occured.
      */
     public void showErrorMessage(String errorMessage) {
@@ -293,11 +323,12 @@ public class View {
     }
 
     /**
-     * This method prints toString() method of a person
-     * @param person The person to be printed
-     * @param <E> A generic element, in this case any element with a toString method
+     * This method prints toString() method of an element
+     *
+     * @param element The element to be printed
+     * @param <E>    A generic element, in this case any element with a toString method
      */
-    public <E> void showPerson(E person) {
-        System.out.println(person);
+    public <E> void showElement(E element) {
+        System.out.println(element);
     }
 }
