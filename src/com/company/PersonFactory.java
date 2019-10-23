@@ -7,7 +7,7 @@ public class PersonFactory {
         RECEPTIONIST,
         MANAGER,
     }
-
+    //TODO: Create overloaded  method to avoid using view in here.
     public static Person createPerson(PersonType personType) {
         String firstName = View.getInstance().inputName("first");
         String lastName = View.getInstance().inputName("last");
