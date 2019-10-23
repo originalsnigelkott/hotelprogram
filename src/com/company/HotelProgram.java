@@ -130,7 +130,7 @@ public class HotelProgram {
                                                             view.showErrorMessage("Invalid choice. Try again.");
                                                         }
                                                     }
-                                                }while (sortEmployeeByMenuItemChoice != View.SortEmployeeByMenuItem.BACK);
+                                                } while (sortEmployeeByMenuItemChoice != View.SortEmployeeByMenuItem.BACK);
                                                 Collections.sort(employees);
                                             } else {
                                                 view.showErrorMessage("No employees to sort.");
@@ -253,7 +253,7 @@ public class HotelProgram {
         }
     }
 
-    private void showAllRooms(){
+    private void showAllRooms() {
         int counter = 1;
         for (Floor floor :
                 floors) {

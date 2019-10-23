@@ -30,8 +30,8 @@ public class Floor {
         return rooms;
     }
 
-    public void showRooms () {
-        for (Room room:
+    public void showRooms() {
+        for (Room room :
                 rooms) {
             System.out.println(room.toString());
         }

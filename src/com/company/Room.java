@@ -12,9 +12,9 @@ public class Room {
     @Override
     public String toString() {
         String output = String.format("" +
-                "Roomno: %d\n" +
-                "Noofbeds: %d\n" +
-                "----------",
+                        "Roomno: %d\n" +
+                        "Noofbeds: %d\n" +
+                        "----------",
                 roomNo, noOfBeds);
         return output;
     }

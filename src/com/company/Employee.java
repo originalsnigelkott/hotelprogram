@@ -22,6 +22,7 @@ public abstract class Employee extends Person implements Comparable<Employee> {
         weeklySalary = hoursPerWeek * hourlySalary;
         employeeID = generateEmployeeID();
     }
+
     //TODO: add employeeID per class, example: 11001 manager, 12001 cleaner, 13001 receptionist or R10001, C10001, M10001
     private int generateEmployeeID() {
         counter++;
@@ -51,15 +52,19 @@ public abstract class Employee extends Person implements Comparable<Employee> {
                 , employeeID, this.getClass().getSimpleName(), super.getLastName(), super.getFirstName(), super.getDateOfBirth(), weeklySalary, hoursPerWeek);
         return output;
     }
+
     public int getEmployeeID() {
         return employeeID;
     }
+
     public void setSortEmployeeBy(SortEmployeeBy sortEmployeeBy) {
         this.sortBy = sortEmployeeBy;
     }
+
     public SortEmployeeBy getSortEmployeeBy() {
         return sortBy;
     }
+
     public int compareTo(Employee employee) {
         switch (employee.getSortEmployeeBy()) {
             case ID: {
