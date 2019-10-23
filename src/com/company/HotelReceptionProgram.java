@@ -154,17 +154,18 @@ public class HotelReceptionProgram {
                     break;
                 }
                 case RECEPTION_SUB_MENU: {
-                    view.showMessage("Receptionist options coming soon.");
                     View.ReceptionMenuItem receptionMenuItemChoice;
                     do {
                         view.showMenu(View.ReceptionMenuItem.values());
                         receptionMenuItemChoice = view.inputMenuChoice(View.ReceptionMenuItem.values());
                         switch (receptionMenuItemChoice) {
                             case ROOMS: {
+                                view.showMessage("Room options coming soon.");
                                 //TODO: implement
                                 break;
                             }
                             case GUESTS: {
+                                view.showMessage("Guest options coming soon.");
                                 //TODO: implement
                                 break;
                             }
