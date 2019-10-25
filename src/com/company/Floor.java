@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Floor {
     private int floorNo;
-    public static final int NUMBER_OF_ROOMS_PER_FLOOR = 3;
+    private static final int NUMBER_OF_ROOMS_PER_FLOOR = 3;
     private ArrayList<Room> rooms = new ArrayList();
 
     public Floor(int floorNo) {
@@ -28,12 +28,5 @@ public class Floor {
 
     public ArrayList<Room> getRooms() {
         return rooms;
-    }
-
-    public void showRooms() {
-        for (Room room :
-                rooms) {
-            System.out.println(room.toString());
-        }
     }
 }

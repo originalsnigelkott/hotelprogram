@@ -8,6 +8,7 @@ public class HotelProgram {
     private static final int NUMBER_OF_FLOORS = 3;
     private ArrayList<Floor> floors = new ArrayList<>();
     private ArrayList<Employee> employees;
+    private ArrayList<Guest> guests;
     private String employeesSaveFileName = "employees.ser";
 
     View view;
@@ -19,6 +20,7 @@ public class HotelProgram {
         }
         ///* This is hardcoded employees to simplify testing.
         employees = new ArrayList<>();
+        guests = new ArrayList<>();
         employees.add(new Manager("Hästen", "Boss", "20090412", 44, 60));
         employees.add(new Receptionist("Saga", "Drake", "19251230", 14.99, 40));
         employees.add(new Receptionist("Per", "Dahlstedt", "19870918", 10.99, 35));
@@ -69,14 +71,14 @@ public class HotelProgram {
                                         }
                                     }
                                 } while (employeeTypeMenuItem != View.hireEmployeeTypeMenuItem.BACK);
-                                saveObjectsToFile(employeesSaveFileName, employees);
+                                saveObjectToFile(employeesSaveFileName, employees);
                                 break;
                             }
                             case DISMISS: {
                                 int employeeID = view.inputEmployeeID();
                                 if (view.isConfirmed("Employee will be permanently removed")) {
                                     dismissEmployee(employeeID);
-                                    saveObjectsToFile(employeesSaveFileName, employees);
+                                    saveObjectToFile(employeesSaveFileName, employees);
                                 }
                                 break;
                             }
@@ -268,12 +270,12 @@ public class HotelProgram {
     }
 
     private void shutDownSequence() {
-        saveObjectsToFile(employeesSaveFileName, employees);
+        saveObjectToFile(employeesSaveFileName, employees);
         view.showMessage("Quiting...");
         //TODO: add more files when needed
     }
 
-    private <E> void saveObjectsToFile(String filename, E object) {
+    private <E> void saveObjectToFile(String filename, E object) {
         FileUtils.writeObject(filename, object, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
     }
 
