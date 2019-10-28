@@ -280,6 +280,17 @@ public class View {
         }
     }
 
+    //TODO: use this instead of other string input methods?
+    //inputDateOfBirth() uses other FormatChecker.
+    //Still use it for all and check in HotelProgram or keep inputDateOfBirth()?
+    public String inputString(String message) {
+        showMessage(message);
+        String userInput;
+        do {
+            userInput = input.nextLine();
+        } while(!FormatCheckers.stringIsValid(userInput));
+        return userInput;
+    }
     /**
      * This method reads a name from the user
      *
